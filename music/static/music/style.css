@@ -1,0 +1,11 @@
+
+body{
+    background: white url("images/concrete-texture.png");
+}
+
+.navbar {
+        border-rdaius : 100;
+}
+.navbar-brand{
+    font-family: 'Satisfy', cursive;
+}
