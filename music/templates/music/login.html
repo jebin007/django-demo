@@ -1,6 +1,6 @@
 <!--- We are making a form for the model album so the html name should be album_form !--->
 {% extends 'music/base.html' %}
-{% block title %}Register{% endblock %}
+{% block title %}User Login{% endblock %}
 
 
 {% block body %}
@@ -12,13 +12,13 @@
                     {% if error_message %}
                         <p><strong>{{ error_message }}</strong></p>
                     {% endif %}
-                    <h3>Create a New Account</h3>
+                    <h3>Please Log In!!!</h3>
                     <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {% include 'music/form-template.html' %}
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-success">Submit</button>
+                                <button type="submit" class="btn btn-success">Login</button>
                             </div>
                         </div>
                     </form>

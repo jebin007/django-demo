@@ -17,10 +17,14 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^music/', include('music.urls')),
+    #change the default login url from /accounts/profile/login.html to /music/login.html
+    url(r'^accounts/login/$', auth_views.login, {'template_name': 'music/login.html'}, name='login'),
 ]
 
 if settings.DEBUG:

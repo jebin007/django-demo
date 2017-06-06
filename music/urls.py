@@ -18,4 +18,6 @@ urlpatterns = [
 
     # /music/album/2/delete/
     url(r'album/(?P<pk>[0-9]+)/delete/$', views.AlbumDelete.as_view(), name='album-delete'),
+
+    url(r'^login/$', views.LoginView.as_view(), name='loginu'),
 ]
