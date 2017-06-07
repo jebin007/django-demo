@@ -2,7 +2,7 @@ from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.generic import View
@@ -35,6 +35,9 @@ class AlbumUpdate(UpdateView):
 class AlbumDelete(DeleteView):
     model = Album
     success_url=reverse_lazy('music:index')
+class AlbumCreate(CreateView):
+    model = Album
+    fields = ['artist','album_title','genre','album_logo']
 
 class UserFormView(View):
     form_class = UserForm
@@ -86,6 +89,16 @@ class LoginView(View):
 
         error_message = "Invalid Login Credentials" #this is how you raise error when invalid login with render
         return render(request, self.template_name, {'form': form, 'error_message': error_message})
+
+class LogoutView(View):
+    form_class = LoginForm
+    def get(self, request):
+        logout(request)
+
+        template_name = 'music/login.html'
+        form = self.form_class(None)
+        error_message = "You have successfully been logged out!!"
+        return render(request, "music/login.html", {'form':form, 'error_message': error_message})
 
 
 
