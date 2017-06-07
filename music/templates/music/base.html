@@ -48,6 +48,11 @@
             </form>
 
             <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                     <li class="">
+                        <span style="color:white" aria-hidden="true">&nbsp;Welcome {{ user.username }}!</span>
+                    </li>
+                {% endif %}
                 <li class="">
                     <a href="{% url 'music:album-add' %}">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add Album

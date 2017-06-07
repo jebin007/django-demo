@@ -7,8 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.generic import View
 from .forms import UserForm, LoginForm
-from .models import Album
-from django.http import HttpResponse
+from .models import Album, Song
+from django.contrib import messages
 
 class IndexView(generic.ListView):
     template_name='music/index.html'
@@ -35,9 +35,9 @@ class AlbumUpdate(UpdateView):
 class AlbumDelete(DeleteView):
     model = Album
     success_url=reverse_lazy('music:index')
-class AlbumCreate(CreateView):
-    model = Album
-    fields = ['artist','album_title','genre','album_logo']
+class SongCreate(CreateView):
+    model = Song
+    fields = ['file_type','album','song_title']
 
 class UserFormView(View):
     form_class = UserForm
@@ -94,11 +94,9 @@ class LogoutView(View):
     form_class = LoginForm
     def get(self, request):
         logout(request)
-
-        template_name = 'music/login.html'
-        form = self.form_class(None)
-        error_message = "You have successfully been logged out!!"
-        return render(request, "music/login.html", {'form':form, 'error_message': error_message})
+        # if all goes well
+        messages.add_message(request, messages.INFO, 'You are now logged out successfully!!')
+        return redirect('/music/login/')
 
 
 
