@@ -67,11 +67,10 @@
                                     <a href="#" class="btn-favorite"><span class="glyphicon glyphicon-star {% if song.is_favorite %}active{% endif %}"></span></a>
                                 </td>
                                 <td>
-                                    <form action="#" method="post" style="display: inline;">
+                                   <form action="{% url 'music:song-delete' song.id %}" method="post" style="display: inline;">
                                         {% csrf_token %}
-                                        <input type="hidden" name="song_id" value="{{ song.id }}" />
-                                        <button type="submit" class="btn btn-danger btn-xs">
-                                            <span class="glyphicon glyphicon-remove"></span>&nbsp; Delete
+                                        <input type="hidden" name="song" value="{{ song.id }}" />
+                                        <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove">Delete </span>
                                         </button>
                                     </form>
                                 </td>

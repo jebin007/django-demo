@@ -38,6 +38,9 @@ class AlbumDelete(DeleteView):
 class SongCreate(CreateView):
     model = Song
     fields = ['file_type','album','song_title', 'song_file']
+class SongDelete(DeleteView):
+    model = Song
+    success_url=reverse_lazy("music:index")
 
 class UserFormView(View):
     form_class = UserForm
