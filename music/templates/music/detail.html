@@ -53,13 +53,16 @@
                         {% for song in album.song_set.all %}
                             <tr>
                                 <td>{{ song.song_title }}</td>
-                                <td>
-                                    <a target="_blank" href="#">
-                                        <button type="button" class="btn btn-success btn-xs">
-                                            <span class="glyphicon glyphicon-play"></span>&nbsp; Play
-                                        </button>
-                                    </a>
-                                </td>
+                                {% if song.song_file %}
+                                    <td>
+                                    <audio controls>
+                                        <source src="{{ song.song_file.url }}" type="audio/mpeg">
+                                        {% else %}
+                                        <h3>No file to display</h3>
+                                    </audio>
+                                    </td>
+                                {% endif %}
+
                                 <td>
                                     <a href="#" class="btn-favorite"><span class="glyphicon glyphicon-star {% if song.is_favorite %}active{% endif %}"></span></a>
                                 </td>
