@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from . import views
+from django.contrib.auth.views import password_reset
 app_name = 'music'
 urlpatterns = [
     #/music/
@@ -30,4 +31,9 @@ urlpatterns = [
 
     #music/logout
     url(r'^logout/$', views.LogoutView.as_view(), name='logout'),
+
+    # /music/reset-password/
+    url(r'^reset-password/$', password_reset, name='reset-password'),
+
+
 ]

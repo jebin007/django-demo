@@ -125,3 +125,5 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #Actual directory on the computer to store files
 MEDIA_URL ='/media/'    #Relative urls which browsers use to access the files
 
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
