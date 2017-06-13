@@ -24,8 +24,9 @@ from django.contrib.auth.views import password_reset_done, password_reset_confir
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^music/', include('music.urls')),
+    url(r'^accounts/', include('accounts.urls')),
     #change the default login url from /accounts/profile/login.html to /music/login.html
-    url(r'^accounts/login/$', auth_views.login, {'template_name': 'music/login.html'}, name='login'),
+    url(r'^accounts/login/$', auth_views.login, {'template_name': 'accounts/login.html'}, name='login'),
 
 
     # /reset-password/done

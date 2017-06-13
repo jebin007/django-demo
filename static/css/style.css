@@ -1,0 +1,19 @@
+
+body{
+    background: white url("../images/red_brick.jpg");
+}
+
+.navbar {
+        border-rdaius : 100;
+}
+.navbar-brand{
+    font-family: 'Satisfy', cursive;
+
+}
+.panel{
+    background-image: url('../images/black_bg.png');
+    color:floralwhite;
+}
+.table {
+    color:floralwhite;
+}

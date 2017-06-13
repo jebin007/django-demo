@@ -1,0 +1,40 @@
+<!--- We are making a form for the model album so the html name should be album_form !--->
+{% extends 'base.html' %}
+
+{% block title %}User Login{% endblock %}
+
+
+{% block body %}
+<div class="container-fluid">
+    <div class ="row">
+        <div class="col-sm-12 col-md-7">
+            <div class = "panel panel-default">
+                <div class="panel-body">
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                {% if messages %}
+                    <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                    <h3>Please Log In!!!</h3>
+                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% include 'music/form-template.html' %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">Login</button>
+                            </div>
+                            <a href="{% url 'accounts:reset-password'%}"> Forgot Your Password?? </a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
